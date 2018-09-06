@@ -396,9 +396,13 @@ class VRViewController: UIViewController, SCNSceneRendererDelegate, ARSCNViewDel
                 
                 if let object = resultNode as? VRObject {
                     
-                    currentLookAtObject?.setHighlighted(to: false)
-                    resultNode.setHighlighted(to: true)
-                    currentLookAtObject = object
+                    if object.findable {
+                        
+                        currentLookAtObject?.setHighlighted(to: false)
+                        resultNode.setHighlighted(to: true)
+                        currentLookAtObject = object
+                        
+                    }
                     
                 }
                 
@@ -640,6 +644,11 @@ class VRViewController: UIViewController, SCNSceneRendererDelegate, ARSCNViewDel
     
     func displayScene(_ named: String) {
         
+        currentLookAtObject?.setHighlighted(to: false)
+        
+        currentLookAtObject = nil
+        currentLookAtPoint = nil
+        
         guard let newScene = scenes[named] else {
             
             return
@@ -659,6 +668,14 @@ class VRViewController: UIViewController, SCNSceneRendererDelegate, ARSCNViewDel
                 newScene.switchSceneSetup()
                 
                 scene.rootNode.isHidden = false
+                
+                let lightingEnvironment: Any = scene.lightingEnvironment.contents as? String ?? UIColor.black
+                mainScene.lightingEnvironment.contents = lightingEnvironment
+                
+                let background: Any = scene.background.contents as? String ?? UIColor.white
+                mainScene.background.contents = background
+                
+                print("background: \(background), lighting: \(lightingEnvironment)")
                 
             }
             
