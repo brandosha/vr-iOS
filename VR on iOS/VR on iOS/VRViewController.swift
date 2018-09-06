@@ -189,8 +189,73 @@ class VRViewController: UIViewController, SCNSceneRendererDelegate, ARSCNViewDel
         
     }
     
-    /// override this method in implementation of VRViewController
-    func userTapped(lookingAt object: VRObject, lookingAt position: SCNVector3) { }
+    var holdingObject: VRObject?
+    
+    func userTapped(lookingAt object: VRObject, lookingAt position: SCNVector3) {
+        
+        if holdingObject == nil && object.type != .static {
+            
+            let taken = object.take()
+            
+            if !taken {
+                
+                print("Could not take")
+                
+            } else {
+                
+                print("Taken successfully")
+                
+                holdingObject = object
+                
+            }
+            
+        } else if holdingObject == object {
+            
+            let replaced = object.replace()
+            
+            if !replaced {
+                
+                print("Could not replace")
+                
+            } else {
+                
+                print("Replaced successfully")
+                
+                holdingObject = nil
+                
+            }
+            
+        } else if holdingObject != nil {
+            
+            let used = holdingObject!.use(on: object)
+            
+            if !used {
+                
+                print("Could not use")
+                
+            } else {
+                
+                print("Used successfully")
+                
+            }
+            
+        } else {
+            
+            let used = object.use(on: object)
+            
+            if !used {
+                
+                print("Could not use")
+                
+            } else {
+                
+                print("Used successfully")
+                
+            }
+            
+        }
+        
+    }
     
     var ARMode: Bool = false
     
