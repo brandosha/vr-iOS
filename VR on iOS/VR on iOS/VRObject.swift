@@ -34,6 +34,8 @@ class VRObject: SCNNode {
     var type: VRObjectType
     var tags: [String] = []
     
+    var findable = true
+    
     private var actualOpacity: CGFloat
     override var opacity: CGFloat {
         
@@ -56,6 +58,7 @@ class VRObject: SCNNode {
         
         self.type = type
         self.actualOpacity = 1
+        self.tags = tags
         
         super.init()
         super.geometry = geometry
@@ -66,6 +69,7 @@ class VRObject: SCNNode {
     init?(fromFile: SCNScene, objectName: String, type: VRObjectType, tags: [String] = []) {
         
         self.type = type
+        self.tags = tags
         
         guard let object = fromFile.rootNode.childNode(withName: objectName, recursively: true) else {
             
@@ -106,6 +110,7 @@ class VRObject: SCNNode {
         
         self.type = type
         self.actualOpacity = fromNode.opacity
+        self.tags = tags
         
         super.init()
         
