@@ -29,7 +29,7 @@ class VRObject: SCNNode {
     /// Set this function to define what happens when the item is put back, return true if it is replaced or false if it isn't
     var replaceObjectFunc: (() -> Bool)?
     
-    var holdingImage: UIImage = #imageLiteral(resourceName: "defaultImage.png")
+    var holdingImage: UIImage = UIImage()
     
     var type: VRObjectType
     var tags: [String] = []
