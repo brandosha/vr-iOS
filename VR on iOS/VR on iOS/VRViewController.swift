@@ -12,7 +12,7 @@ import UIKit
 import Darwin
 import CoreBluetooth
 
-class VRViewController: UIViewController, SCNSceneRendererDelegate, ARSCNViewDelegate, ARSessionDelegate {
+class VRViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     
     @IBOutlet var vrView: UIView!
     
@@ -127,6 +127,10 @@ class VRViewController: UIViewController, SCNSceneRendererDelegate, ARSCNViewDel
             
             _mainCameraNode.camera?.zNear = Double(0.05 * multiplier)
             _mainCameraNode.camera?.zFar = Double(10 * multiplier)
+            
+            _mainCameraNode.position.x *= multiplier
+            _mainCameraNode.position.y *= multiplier
+            _mainCameraNode.position.z *= multiplier
             
         }
         
@@ -320,8 +324,6 @@ class VRViewController: UIViewController, SCNSceneRendererDelegate, ARSCNViewDel
         sceneViewL.autoenablesDefaultLighting = true
         sceneViewR.autoenablesDefaultLighting = true
         
-        sceneViewL.delegate = self
-        
         let leftCam = SCNNode()
         leftCam.camera = SCNCamera()
         leftCam.camera?.zNear = Double(0.05 * multiplier)
@@ -357,6 +359,7 @@ class VRViewController: UIViewController, SCNSceneRendererDelegate, ARSCNViewDel
         self.view.addSubview(sceneViewR)
         
         self.view.addSubview(ARView)
+        vrView.sendSubviewToBack(ARView)
         
         let tooFarFromOriginTube = SCNTube(innerRadius: CGFloat(0.8 * multiplier), outerRadius: CGFloat(0.9 * multiplier), height: CGFloat(5 * multiplier))
         tooFarFromOriginTube.firstMaterial?.diffuse.contents = #colorLiteral(red: 0.925490200519562, green: 0.235294118523598, blue: 0.10196078568697, alpha: 1.0)
@@ -637,12 +640,17 @@ class VRViewController: UIViewController, SCNSceneRendererDelegate, ARSCNViewDel
         let openSettings: ((UIAlertAction) -> Void)? = { (_) -> Void in
             
             guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                
                 return
+                
             }
             
             if UIApplication.shared.canOpenURL(settingsUrl) {
+                
                 UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                    
                     print("Settings opened: \(success)") // Prints true
+                    
                 })
             }
             
@@ -695,13 +703,14 @@ class VRViewController: UIViewController, SCNSceneRendererDelegate, ARSCNViewDel
         }
         
         let alert = UIAlertController(title: "ARKit Encountered An Error", message: errorStr, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
         if shouldOpenSettings {
             
             alert.addAction(UIAlertAction(title: "Settings", style: .cancel, handler: openSettings))
             
         }
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
         self.present(alert, animated: true, completion: nil)
         
@@ -734,7 +743,7 @@ class VRViewController: UIViewController, SCNSceneRendererDelegate, ARSCNViewDel
                 
                 scene.rootNode.isHidden = false
                 
-                let lightingEnvironment: Any = scene.lightingEnvironment.contents as? String ?? UIColor.black
+                let lightingEnvironment: Any = scene.lightingEnvironment.contents as? String ?? UIColor.clear
                 mainScene.lightingEnvironment.contents = lightingEnvironment
                 
                 let background: Any = scene.background.contents as? String ?? UIColor.white
@@ -743,6 +752,12 @@ class VRViewController: UIViewController, SCNSceneRendererDelegate, ARSCNViewDel
                 print("background: \(background), lighting: \(lightingEnvironment)")
                 
             }
+            
+        }
+        
+        if clampSceneToFloor == true {
+            
+            clampSceneToFloor = true
             
         }
         
