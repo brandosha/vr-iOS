@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.14" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cl1-07-PB3">
+    <device id="retina4_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="oeL-mh-NgS">
+            <objects>
+                <viewController id="cl1-07-PB3" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7rc-Dl-bEl">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ATi-xn-BRr">
+                                <rect key="frame" x="258.5" y="216" width="150" height="30"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="pfG-5o-x4w"/>
+                                </constraints>
+                                <state key="normal" title="Local Multiplayer"/>
+                                <connections>
+                                    <segue destination="7zr-j0-0vG" kind="show" id="WVe-Hy-JEj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQZ-rT-olr">
+                                <rect key="frame" x="258.5" y="171" width="150" height="30"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="bU7-Be-VYr"/>
+                                </constraints>
+                                <state key="normal" title="Play"/>
+                                <connections>
+                                    <segue destination="BV1-FR-VrT" kind="show" id="Mpt-f1-Nec"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ATi-xn-BRr" firstAttribute="centerX" secondItem="7rc-Dl-bEl" secondAttribute="centerX" id="6Bf-wD-D9z"/>
+                            <constraint firstItem="RQZ-rT-olr" firstAttribute="centerX" secondItem="7rc-Dl-bEl" secondAttribute="centerX" id="6FH-8x-wNJ"/>
+                            <constraint firstItem="ATi-xn-BRr" firstAttribute="top" secondItem="RQZ-rT-olr" secondAttribute="bottom" constant="15" id="cwf-wp-qO4"/>
+                            <constraint firstItem="Wkj-G9-Waq" firstAttribute="bottom" secondItem="ATi-xn-BRr" secondAttribute="bottom" constant="129" id="hWD-fP-Ubp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Wkj-G9-Waq"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ym4-yC-9jc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-672.41379310344837" y="493.60000000000002"/>
+        </scene>
+        <!--Main View Controller-->
+        <scene sceneID="tXr-a1-R10">
+            <objects>
+                <viewController id="BV1-FR-VrT" customClass="MainViewController" customModule="VR_on_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="p8f-Zx-82H">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="PO5-7k-zsJ"/>
+                    </view>
+                    <connections>
+                        <outlet property="vrView" destination="p8f-Zx-82H" id="bnc-hy-uGh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+        <!--Multiplayer View Controller-->
+        <scene sceneID="dgO-Sn-uuT">
+            <objects>
+                <viewController id="7zr-j0-0vG" customClass="MultiplayerViewController" customModule="VR_on_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mgv-Iy-ZxF">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="902-pM-doH"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ufF-XR-NTN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="34" y="978"/>
+        </scene>
+    </scenes>
+</document>
