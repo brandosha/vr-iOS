@@ -22,6 +22,8 @@
 		A13B4B76213D9D910094E33D /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13B4B75213D9D910094E33D /* MainScene.swift */; };
 		A152AADD2151D21C0082C26D /* CodableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A152AADC2151D21C0082C26D /* CodableData.swift */; };
 		A17C553A214AEA4A00B2931E /* VRMultipeerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17C5539214AEA4A00B2931E /* VRMultipeerController.swift */; };
+		A1D1A88A21556DF800009380 /* NodeOutlineWhite copy.metal in Sources */ = {isa = PBXBuildFile; fileRef = A1D1A88821556DF800009380 /* NodeOutlineWhite copy.metal */; };
+		A1D1A88B21556DF800009380 /* NodeTechnique.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1D1A88921556DF800009380 /* NodeTechnique.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 		A152AADC2151D21C0082C26D /* CodableData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableData.swift; sourceTree = "<group>"; };
 		A1797CB62152B2DF006143F7 /* TestPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TestPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A17C5539214AEA4A00B2931E /* VRMultipeerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VRMultipeerController.swift; sourceTree = "<group>"; };
+		A1D1A88821556DF800009380 /* NodeOutlineWhite copy.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = "NodeOutlineWhite copy.metal"; sourceTree = "<group>"; };
+		A1D1A88921556DF800009380 /* NodeTechnique.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NodeTechnique.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,8 @@
 				A13B4B6F213D9D050094E33D /* VRObject.swift */,
 				A13B4B71213D9D1D0094E33D /* VRScene.swift */,
 				A152AADC2151D21C0082C26D /* CodableData.swift */,
+				A1D1A88821556DF800009380 /* NodeOutlineWhite copy.metal */,
+				A1D1A88921556DF800009380 /* NodeTechnique.plist */,
 				A1797CB62152B2DF006143F7 /* TestPlayground.playground */,
 				A13B4B6A213D9C710094E33D /* Main */,
 				A13B4B5C213D9C1C0094E33D /* Main.storyboard */,
@@ -163,6 +169,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A13B4B59213D9C1C0094E33D /* art.scnassets in Resources */,
+				A1D1A88B21556DF800009380 /* NodeTechnique.plist in Resources */,
 				A13B4B63213D9C1F0094E33D /* LaunchScreen.storyboard in Resources */,
 				A13B4B60213D9C1F0094E33D /* Assets.xcassets in Resources */,
 				A13B4B5E213D9C1C0094E33D /* Main.storyboard in Resources */,
@@ -186,6 +193,7 @@
 				A152AADD2151D21C0082C26D /* CodableData.swift in Sources */,
 				A13B4B74213D9D4E0094E33D /* MainViewController.swift in Sources */,
 				A13B4B6C213D9CAF0094E33D /* Extensions.swift in Sources */,
+				A1D1A88A21556DF800009380 /* NodeOutlineWhite copy.metal in Sources */,
 				A13B4B6E213D9CE10094E33D /* VRViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
